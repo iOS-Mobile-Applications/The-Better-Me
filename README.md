@@ -21,8 +21,8 @@ how many steps have you made today, or how many callories do you need to keep yo
 ## Main functionality
 
 1. Creating daily routines:
-- Adding daily menu
-- Adding training program (depends of the day)
+  - Adding daily menu
+  - Adding training program (depends of the day)
 
 Daily routines are displayed in table at home page. Each cell is clickable. 
 - On touch it shows details for the routine.
