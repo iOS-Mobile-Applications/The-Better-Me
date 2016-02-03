@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
 
-@interface DBManager : NSObject
+@interface DBManager : NSObject {
+    sqlite3 *databaseHandle;
+}
 
+-(void) initDatabase;
+
+// Part 2
 @property (nonatomic, strong) NSMutableArray *arrColumnNames;
 @property (nonatomic) int affectedRows;
 @property (nonatomic) long long lastInsertedRowID;
