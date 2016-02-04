@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
+#import "Product.h"
+#import "Exercise.h"
+
 #import <sqlite3.h>
 
 @interface DBManager : NSObject {
@@ -15,14 +19,15 @@
 
 -(void) initDatabase;
 
-// Part 2
-@property (nonatomic, strong) NSMutableArray *arrColumnNames;
-@property (nonatomic) int affectedRows;
-@property (nonatomic) long long lastInsertedRowID;
+-(void)insertUser:(User *)user;
+-(void)insertProduct:(Product *)product;
+-(void)insertExercise:(Exercise *)exercise;
 
--(instancetype)initWithDatabaseFilename:(NSString *)dbFilename;
+-(NSArray *)getAllUserData;
+-(NSArray *)getAllProductsData;
+-(NSArray *)getAllExercisesData;
 
--(NSArray *)loadDataFromDB:(NSString *)query;
--(void)executeQuery:(NSString *)query;
+-(NSArray *)getProductsByDate:(NSDate *)date;
+-(NSArray *)getExercisesByDate:(NSDate *)date;
 
 @end

@@ -11,163 +11,191 @@
 
 @interface DBManager()
 
-@property (strong, nonatomic) NSString *documentsDirectory;
-@property (strong, nonatomic) NSString *databaseFilename;
-@property (nonatomic, strong) NSMutableArray *arrResults;
-
--(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable;
--(void)copyDatabaseIntoDocumentsDirectory;
 
 @end
 
 @implementation DBManager
 
--(instancetype)initWithDatabaseFilename:(NSString *)dbFilename {
-    self = [super init];
-    if (self) {
-        // Set the documents directory path to the documentsDirectory property.
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        self.documentsDirectory = [paths objectAtIndex:0];
+// Method to open a database. The database will be created if it doesn't exist
+-(void)initDatabase {
+    // Create a string containing the full path to the sqlite.db inside the documents folder
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"sqlite.db"];
+    
+    // Check to see if the database file already exists
+    BOOL databaseAlreadyExists = [[NSFileManager defaultManager] fileExistsAtPath:databasePath];
+    
+    // Open the database and store the handle as a data member
+    if (sqlite3_open([databasePath UTF8String], &databaseHandle) == SQLITE_OK) {
         
-        // Keep the database filename.
-        self.databaseFilename = dbFilename;
-        
-        // Copy the database file into the documents directory if necessary.
-        [self copyDatabaseIntoDocumentsDirectory];
-    }
-    
-    return self;
-}
-
--(void)copyDatabaseIntoDocumentsDirectory{
-    // Check if the database file exists in the documents directory.
-    NSString *destinationPath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:destinationPath]) {
-        // The database file does not exist in the documents directory, so copy it from the main bundle now.
-        NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseFilename];
-        NSError *error;
-        [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:destinationPath error:&error];
-        
-        // Check if any error occurred during copying and display it.
-        if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-    }
-}
-
--(void)runQuery:(const char *)query isQueryExecutable:(BOOL)queryExecutable{
-    // Create a sqlite object.
-    sqlite3 *sqlite3Database;
-    
-    // Set the database file path.
-    NSString *databasePath = [self.documentsDirectory stringByAppendingPathComponent:self.databaseFilename];
-    
-    // Initialize the results array.
-    if (self.arrResults != nil) {
-        [self.arrResults removeAllObjects];
-        self.arrResults = nil;
-    }
-    self.arrResults = [[NSMutableArray alloc] init];
-    
-    // Initialize the column names array.
-    if (self.arrColumnNames != nil) {
-        [self.arrColumnNames removeAllObjects];
-        self.arrColumnNames = nil;
-    }
-    self.arrColumnNames = [[NSMutableArray alloc] init];
-    
-    
-    // Open the database.
-    BOOL openDatabaseResult = sqlite3_open([databasePath UTF8String], &sqlite3Database);
-    if(openDatabaseResult == SQLITE_OK) {
-        // Declare a sqlite3_stmt object in which will be stored the query after having been compiled into a SQLite statement.
-        sqlite3_stmt *compiledStatement;
-        
-        // Load all data from database to memory.
-        BOOL prepareStatementResult = sqlite3_prepare_v2(sqlite3Database, query, -1, &compiledStatement, NULL);
-        if(prepareStatementResult == SQLITE_OK) {
-            // Check if the query is non-executable.
-            if (!queryExecutable){
-                // In this case data must be loaded from the database.
-                // Declare an array to keep the data for each fetched row.
-                NSMutableArray *arrDataRow;
-                
-                // Loop through the results and add them to the results array row by row.
-                while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-                    // Initialize the mutable array that will contain the data of a fetched row.
-                    arrDataRow = [[NSMutableArray alloc] init];
-                    
-                    // Get the total number of columns.
-                    int totalColumns = sqlite3_column_count(compiledStatement);
-                    
-                    // Go through all columns and fetch each column data.
-                    for (int i=0; i<totalColumns; i++){
-                        // Convert the column data to text (characters).
-                        char *dbDataAsChars = (char *)sqlite3_column_text(compiledStatement, i);
-                        
-                        // If there are contents in the currenct column (field) then add them to the current row array.
-                        if (dbDataAsChars != NULL) {
-                            // Convert the characters to string.
-                            [arrDataRow addObject:[NSString  stringWithUTF8String:dbDataAsChars]];
-                        }
-                        
-                        // Keep the current column name.
-                        if (self.arrColumnNames.count != totalColumns) {
-                            dbDataAsChars = (char *)sqlite3_column_name(compiledStatement, i);
-                            [self.arrColumnNames addObject:[NSString stringWithUTF8String:dbDataAsChars]];
-                        }
-                    }
-                    
-                    // Store each fetched data row in the results array, but first check if there is actually data.
-                    if (arrDataRow.count > 0) {
-                        [self.arrResults addObject:arrDataRow];
-                    }
-                }
+        // Create the database if it doesn't yet exists in the fyle system
+        if (!databaseAlreadyExists) {
+            
+            // Create USER table
+            const char *sqlStatement = "CREATE TABLE IF NOT EXISTS USER (ID INTEGER PRIMARY KEY AUTOINCREMENT, USERNAME TEXT, FIRSTNAME TEXT, LASTNAME TEXT, HEIGHT INTEGER, AGE INTEGER, WEIGHT REAL, PHYSICALACTIVITY REAL, SEX INTEGER)";
+            char *error;
+            
+            if (sqlite3_exec(databaseHandle, sqlStatement, NULL, NULL, &error) == SQLITE_OK) {
+                NSLog(@"USER table created...");
+            } else {
+                NSLog(@"Error while creating USER table: %s", error);
             }
-            else {
-                // This is the case of an executable query (insert, update, ...).
-                
-                // Execute the query.
-                BOOL executeQueryResults = sqlite3_step(compiledStatement);
-                if (executeQueryResults == SQLITE_DONE) {
-                    // Keep the affected rows.
-                    self.affectedRows = sqlite3_changes(sqlite3Database);
-                    
-                    // Keep the last inserted row ID.
-                    self.lastInsertedRowID = sqlite3_last_insert_rowid(sqlite3Database);
-                }
-                else {
-                    // If could not execute the query show the error message on the debugger.
-                    NSLog(@"DB Error: %s", sqlite3_errmsg(sqlite3Database));
-                }
+            
+            // Create PRODUCT table
+            sqlStatement = "CREATE TABLE IF NOT EXISTS PRODUCT (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, QUANTITY INTEGER, DATETIME DATE";
+            
+            if (sqlite3_exec(databaseHandle, sqlStatement, NULL, NULL, &error) == SQLITE_OK) {
+                NSLog(@"PRODUCT table created...");
+            } else {
+                NSLog(@"Error while creating PRODUCT table: %s", error);
+            }
+            
+            // Create EXERCISE table
+            sqlStatement = "CREATE TABLE IF NOT EXISTS EXERCISE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, WEIGHT REAL, REPS INTEGER, SERIES INTEGER, REST INTEGER, DATETIME DATE";
+            
+            if (sqlite3_exec(databaseHandle, sqlStatement, NULL, NULL, &error) == SQLITE_OK) {
+                NSLog(@"EXERCISE table created...");
+            } else {
+                NSLog(@"Error while creating EXERCISE table: %s", error);
             }
         }
-        else {
-            // In the database cannot be opened then show the error message on the debugger.
-            NSLog(@"%s", sqlite3_errmsg(sqlite3Database));
-        }
-        
-        // Release the compiled statement from memory.
-        sqlite3_finalize(compiledStatement);
-        
     }
     
-    // Close the database.
-    sqlite3_close(sqlite3Database);
+    // Close the database
+    sqlite3_close(databaseHandle);
 }
 
--(NSArray *)loadDataFromDB:(NSString *)query{
-    // Run the query and indicate that is not executable.
-    // The query string is converted to a char* object.
-    [self runQuery:[query UTF8String] isQueryExecutable:NO];
+// CRUD operations
+
+-(void)insertUser:(User *)user {
+    // Create insert statement for User
+    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO USER (USERNAME, FIRSTNAME, LASTNAME, HEIGHT, AGE, WEIGHT, PHYSICALACTIVITY, SEX) VALUES (\"%@\", \"%@\", \"%@\", \"%ld\", \"%ld\", \"%f\", \"%f\", \"%ld\")", user.username, user.firstname, user.lastname, (long)user.height, (long)user.age, user.weight, user.physicalActivity, (long)user.isMale];
     
-    // Returned the loaded results.
-    return (NSArray *)self.arrResults;
+    char *error;
+    if (sqlite3_exec(databaseHandle, [insertStatement UTF8String], NULL, NULL, &error) == SQLITE_OK) {
+        NSLog(@"User inserted...");
+    } else {
+        NSLog(@"Error while inserting user: %s", error);
+    }
 }
 
--(void)executeQuery:(NSString *)query{
-    // Run the query and indicate that is executable.
-    [self runQuery:[query UTF8String] isQueryExecutable:YES];
+-(void)insertProduct:(Product *)product {
+    // Create insert statement for Product
+    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO PRODUCT (NAME, QUANTITY, DATETIME) VALUES (\"%@\", \"%ld\", \"%@\")", product.productName, (long)product.quantity, product.dateAndTime];
+    
+    char *error;
+    if (sqlite3_exec(databaseHandle, [insertStatement UTF8String], NULL, NULL, &error) == SQLITE_OK) {
+        NSLog(@"Product inserted...");
+    } else {
+        NSLog(@"Error while inserting product: %s", error);
+    }
 }
 
+-(void)insertExercise:(Exercise *)exercise {
+    // Create insert statement for Exercise
+    NSString *insertStatement = [NSString stringWithFormat:@"INSERT INTO EXERCISE (NAME, WEIGHT, REPS, SERIES, REST, DATETIME) VALUES (\"%@\", \"%f\", \"%ld\", \"%ld\", \"%ld\", \"%@\")", exercise.exerciseName, exercise.weight, (long)exercise.reps, (long)exercise.series, (long)exercise.rest, exercise.dateAndTime];
+    
+    char *error;
+    if (sqlite3_exec(databaseHandle, [insertStatement UTF8String], NULL, NULL, &error) == SQLITE_OK) {
+        NSLog(@"Exercise inserter...");
+    } else {
+        NSLog(@"Error while inserting exercise: %s", error);
+    }
+    
+    
+    
+}
+
+-(NSArray *)getAllUserData {
+    NSMutableArray *userData = [[NSMutableArray alloc] init];
+    
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT ID, USERNAME, FIRSTNAME, LASTNAME, HEIGHT, AGE, WEIGHT, PHYSICALACTIVITY, SEX FROM USER"];
+    
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(databaseHandle, [queryStatement UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+        // Iterate over all returned rows
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *username = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)];
+            NSString *firstname = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 2)];
+            NSString *lastname = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 3)];
+            NSInteger height = sqlite3_column_int(statement, 4);
+            NSInteger age = sqlite3_column_int(statement, 5);
+            double weight = sqlite3_column_double(statement, 6);
+            double physicalActivity = sqlite3_column_double(statement, 7);
+            NSInteger sex = sqlite3_column_int(statement, 8);
+            
+            User *user = [[User alloc] initWithUsername:username andFirstname:firstname andLastname:lastname andHeight:height andAge:age andWeight:weight andPhysicalActivity:physicalActivity andSex:sex];
+            
+            [userData addObject:user];
+        }
+        
+        sqlite3_finalize(statement);
+    }
+    
+    return userData;
+}
+
+-(NSArray *)getAllProductsData {
+    NSMutableArray *productData = [[NSMutableArray alloc] init];
+    
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT ID, NAME, QUANTITY, DATETIME FROM PRODUCT"];
+    
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(databaseHandle, [queryStatement UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+        // Iterate over all returned rows
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *productName = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)];
+            NSInteger quantity = sqlite3_column_int(statement, 2);
+            
+            // Convert to NSDate
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+            
+            NSString *dateAsString = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 3)];
+            NSDate *date = [dateFormatter dateFromString:dateAsString];
+            
+            Product *product = [[Product alloc] initWithProductName:productName andQuantity:quantity andDateAndTime:date];
+            
+            [productData addObject:product];
+        }
+        
+        sqlite3_finalize(statement);
+    }
+    
+    return productData;
+}
+
+-(NSArray *)getAllExercisesData {
+    NSMutableArray *exerciseData = [[NSMutableArray alloc] init];
+    
+    NSString *queryStatement = [NSString stringWithFormat:@"SELECT ID, NAME, WEIGHT, REPS, SERIES, REST, DATETIME FROM EXERCISE"];
+    
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(databaseHandle, [queryStatement UTF8String], -1, &statement, NULL) == SQLITE_OK) {
+        // Iterate over all returned rows
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *exerciseName = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 1)];
+            double weight = sqlite3_column_double(statement, 2);
+            NSInteger reps = sqlite3_column_int(statement, 3);
+            NSInteger series = sqlite3_column_int(statement, 4);
+            NSInteger rest = sqlite3_column_int(statement, 5);
+            
+            // Convert to NSDate
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+            
+            NSString *dateAsString = [NSString stringWithUTF8String:(char*)sqlite3_column_text(statement, 6)];
+            NSDate *date = [dateFormatter dateFromString:dateAsString];
+            
+            Exercise *exercise = [[Exercise alloc] initWithExerciseName:exerciseName andWeight:weight andReps:reps andSeries:series andRest:rest andDateAndTime:date];
+            
+            [exerciseData addObject:exercise];
+        }
+        
+        sqlite3_finalize(statement);
+    }
+    
+    return exerciseData;
+}
 @end

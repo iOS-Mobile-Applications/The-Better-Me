@@ -17,9 +17,9 @@ NSString *_firstname;
 NSString *_lastname;;
 NSInteger _height;
 NSInteger _age;
-CGFloat _weight;
+CGFloat _personWeight;
 CGFloat _physicalActivity;
-BOOL _isMale;
+NSInteger _isMale;
 
 -(instancetype)initWithUsername:(NSString *)username
                    andFirstname:(NSString *)firstname
@@ -28,7 +28,7 @@ BOOL _isMale;
                          andAge:(NSInteger)age
                       andWeight:(CGFloat)weight
             andPhysicalActivity:(CGFloat)physicalActivity
-                         andSex:(BOOL)isMale {
+                         andSex:(NSInteger)isMale {
     self = [super init];
     if (self) {
         self.username = username;
@@ -147,7 +147,7 @@ BOOL _isMale;
 
 // Weight
 -(CGFloat)weight {
-    return _weight;
+    return _personWeight;
 }
 
 -(void)setWeight:(CGFloat)weight {
@@ -162,7 +162,7 @@ BOOL _isMale;
         [ex raise];
     }
     
-    _weight = weight;
+    _personWeight = weight;
 }
 
 // PhysicalActicity

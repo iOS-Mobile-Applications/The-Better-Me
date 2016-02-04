@@ -18,7 +18,7 @@
 @property NSInteger age;
 @property CGFloat weight;
 @property CGFloat physicalActivity;
-@property BOOL isMale;
+@property NSInteger isMale;
 
 -(instancetype) initWithUsername: (NSString *) username
                     andFirstname: (NSString *) firstname
@@ -27,7 +27,7 @@
                           andAge: (NSInteger) age
                        andWeight: (CGFloat) weight
              andPhysicalActivity: (CGFloat) physicalActivity
-                          andSex: (BOOL) isMale;
+                          andSex: (NSInteger) isMale;
 
 -(void)setUsername:(NSString *)username;
 -(void)setFirstname:(NSString *)firstname;
@@ -36,6 +36,6 @@
 -(void)setAge:(NSInteger)age;
 -(void)setWeight:(CGFloat)weight;
 -(void)setPhysicalActivity:(CGFloat)physicalActivity;
--(void)setIsMale:(BOOL)isMale;
+-(void)setIsMale:(NSInteger)isMale;
 
 @end
