@@ -19,6 +19,9 @@ extern NSInteger const UserFirstnameMaxLength;
 extern NSInteger const UserLastnameMinLength;
 extern NSInteger const UserLastnameMaxLength;
 
+extern NSInteger const UserPasswordMinLength;
+extern NSInteger const UserPasswordMaxLength;
+
 extern NSInteger const UserMinHeight;
 extern NSInteger const UserMaxHeight;
 
@@ -34,6 +37,8 @@ extern double const UserPhysicalActivityMaxValue;
 extern NSString *const InvalidUsernameMessage;
 extern NSString *const InvalidFirstnameMessage;
 extern NSString *const InvalidLastNameMessage;
+extern NSString *const InvalidPasswordMessage;
+extern NSString *const InvalidConfirmPasswordMessage;
 extern NSString *const InvalidHeightMessage;
 extern NSString *const InvalidAgeMessage;
 extern NSString *const InvalidWeightMessage;

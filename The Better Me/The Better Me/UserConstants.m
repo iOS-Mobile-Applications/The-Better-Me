@@ -19,6 +19,9 @@ NSInteger const UserFirstnameMaxLength = 15;
 NSInteger const UserLastnameMinLength = 2;
 NSInteger const UserLastnameMaxLength = 15;
 
+NSInteger const UserPasswordMinLength = 6;
+NSInteger const UserPasswordMaxLength = 20;
+
 NSInteger const UserMinHeight = 40;
 NSInteger const UserMaxHeight = 300;
 
@@ -34,6 +37,8 @@ double const UserPhysicalActivityMaxValue = 1.9;
 NSString *const InvalidUsernameMessage = @"The username must be between 6 and 20 characters long";
 NSString *const InvalidFirstnameMessage = @"The First name must be between 2 and 15 characters long";
 NSString *const InvalidLastNameMessage = @"The Last name must be between 2 and 15 characters long";
+NSString *const InvalidPasswordMessage = @"The password must be between 6 and 20 characters long";
+NSString *const InvalidConfirmPasswordMessage = @"The passwords don't match";
 NSString *const InvalidHeightMessage = @"The height must be between 40cm and 300cm";
 NSString *const InvalidAgeMessage = @"The age must be between 5 and 150";
 NSString *const InvalidWeightMessage = @"The weight mustc be between 20kg and 250kg";

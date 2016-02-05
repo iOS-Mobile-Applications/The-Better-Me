@@ -11,7 +11,6 @@
 		0BC1E2601C60CEDA00F190DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1E25F1C60CEDA00F190DD /* AppDelegate.m */; };
 		0BC1E2661C60CEDA00F190DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1E2641C60CEDA00F190DD /* Main.storyboard */; };
 		0BC1E2681C60CEDA00F190DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1E2671C60CEDA00F190DD /* Assets.xcassets */; };
-		0BC1E26B1C60CEDA00F190DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1E2691C60CEDA00F190DD /* LaunchScreen.storyboard */; };
 		0BC1E2781C60D22600F190DD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC1E2721C60D22600F190DD /* Bolts.framework */; };
 		0BC1E2791C60D22600F190DD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC1E2731C60D22600F190DD /* Parse.framework */; };
 		0BC1E27A1C60D22600F190DD /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC1E2741C60D22600F190DD /* ParseFacebookUtils.framework */; };
@@ -51,6 +50,9 @@
 		0BD5E6AE1C6287680024CF2C /* ProductConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD5E6AD1C6287680024CF2C /* ProductConstants.m */; };
 		0BD5E6B11C62A6090024CF2C /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD5E6B01C62A6090024CF2C /* Exercise.m */; };
 		0BD5E6B41C62AAF70024CF2C /* ExerciseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD5E6B31C62AAF70024CF2C /* ExerciseConstants.m */; };
+		0BFEE0F91C63C9A6008188DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFEE0F81C63C9A6008188DB /* LaunchScreen.storyboard */; };
+		0BFEE0FD1C64156F008188DB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEE0FC1C64156F008188DB /* Reachability.m */; };
+		0BFEE1001C641676008188DB /* InternetConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEE0FF1C641676008188DB /* InternetConnectionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +62,6 @@
 		0BC1E25F1C60CEDA00F190DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0BC1E2651C60CEDA00F190DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BC1E2671C60CEDA00F190DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0BC1E26A1C60CEDA00F190DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BC1E26C1C60CEDA00F190DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BC1E2721C60D22600F190DD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0BC1E2731C60D22600F190DD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -120,6 +121,11 @@
 		0BD5E6B01C62A6090024CF2C /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		0BD5E6B21C62AAF50024CF2C /* ExerciseConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseConstants.h; sourceTree = "<group>"; };
 		0BD5E6B31C62AAF70024CF2C /* ExerciseConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseConstants.m; sourceTree = "<group>"; };
+		0BFEE0F81C63C9A6008188DB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0BFEE0FB1C64156F008188DB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../../../Downloads/Reachability/Reachability/Reachability.h; sourceTree = "<group>"; };
+		0BFEE0FC1C64156F008188DB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../../../Downloads/Reachability/Reachability/Reachability.m; sourceTree = "<group>"; };
+		0BFEE0FE1C641676008188DB /* InternetConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetConnectionController.h; sourceTree = "<group>"; };
+		0BFEE0FF1C641676008188DB /* InternetConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetConnectionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +193,7 @@
 			children = (
 				0BC1E2931C6155BF00F190DD /* AppDelegate */,
 				0BC1E2671C60CEDA00F190DD /* Assets.xcassets */,
-				0BC1E2691C60CEDA00F190DD /* LaunchScreen.storyboard */,
+				0BFEE0F81C63C9A6008188DB /* LaunchScreen.storyboard */,
 				0BC1E26C1C60CEDA00F190DD /* Info.plist */,
 				0BC1E25C1C60CEDA00F190DD /* main.m */,
 			);
@@ -316,9 +322,8 @@
 		0BC1E2B71C6173E500F190DD /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				0BD5E69A1C622A7F0024CF2C /* Entities */,
-				0BD5E6931C6209C50024CF2C /* DBManager.h */,
-				0BD5E6941C6209C50024CF2C /* DBManager.m */,
+				0BD7E69B1C6399E500C80C29 /* Parse */,
+				0BD7E6991C63995B00C80C29 /* SQLite */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -326,23 +331,11 @@
 		0BC1E2C21C6178D600F190DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0BFEE0FA1C6414BA008188DB /* Network */,
 				0BD5E69F1C6238100024CF2C /* Constants */,
 				0BD5E69E1C6237D70024CF2C /* Validation */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		0BD5E69A1C622A7F0024CF2C /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				0BD5E69B1C622ADA0024CF2C /* User.h */,
-				0BD5E69C1C622ADB0024CF2C /* User.m */,
-				0BD5E6A91C62843F0024CF2C /* Product.h */,
-				0BD5E6AA1C6284400024CF2C /* Product.m */,
-				0BD5E6AF1C62A6080024CF2C /* Exercise.h */,
-				0BD5E6B01C62A6090024CF2C /* Exercise.m */,
-			);
-			name = Entities;
 			sourceTree = "<group>";
 		};
 		0BD5E69E1C6237D70024CF2C /* Validation */ = {
@@ -365,6 +358,47 @@
 				0BD5E6B31C62AAF70024CF2C /* ExerciseConstants.m */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		0BD7E6991C63995B00C80C29 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				0BD5E6931C6209C50024CF2C /* DBManager.h */,
+				0BD5E6941C6209C50024CF2C /* DBManager.m */,
+				0BD7E69A1C63997B00C80C29 /* Models */,
+			);
+			name = SQLite;
+			sourceTree = "<group>";
+		};
+		0BD7E69A1C63997B00C80C29 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0BD5E69B1C622ADA0024CF2C /* User.h */,
+				0BD5E69C1C622ADB0024CF2C /* User.m */,
+				0BD5E6A91C62843F0024CF2C /* Product.h */,
+				0BD5E6AA1C6284400024CF2C /* Product.m */,
+				0BD5E6AF1C62A6080024CF2C /* Exercise.h */,
+				0BD5E6B01C62A6090024CF2C /* Exercise.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0BD7E69B1C6399E500C80C29 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
+		0BFEE0FA1C6414BA008188DB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0BFEE0FB1C64156F008188DB /* Reachability.h */,
+				0BFEE0FC1C64156F008188DB /* Reachability.m */,
+				0BFEE0FE1C641676008188DB /* InternetConnectionController.h */,
+				0BFEE0FF1C641676008188DB /* InternetConnectionController.m */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,10 +458,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BC1E26B1C60CEDA00F190DD /* LaunchScreen.storyboard in Resources */,
 				0BC1E2C11C61770100F190DD /* DetailsProgramTableViewCell.xib in Resources */,
 				0BC1E2681C60CEDA00F190DD /* Assets.xcassets in Resources */,
 				0BC1E2BC1C61761A00F190DD /* HomeTableViewCell.xib in Resources */,
+				0BFEE0F91C63C9A6008188DB /* LaunchScreen.storyboard in Resources */,
 				0BC1E2661C60CEDA00F190DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +475,7 @@
 			files = (
 				0BD5E6B41C62AAF70024CF2C /* ExerciseConstants.m in Sources */,
 				0BD5E6A21C623A8F0024CF2C /* Validator.swift in Sources */,
+				0BFEE1001C641676008188DB /* InternetConnectionController.m in Sources */,
 				0BD5E6B11C62A6090024CF2C /* Exercise.m in Sources */,
 				0BD5E6AE1C6287680024CF2C /* ProductConstants.m in Sources */,
 				0BC1E2601C60CEDA00F190DD /* AppDelegate.m in Sources */,
@@ -453,6 +488,7 @@
 				0BC1E2B61C6173A100F190DD /* DetailsProgramViewController.m in Sources */,
 				0BC1E2C01C61770100F190DD /* DetailsProgramTableViewCell.m in Sources */,
 				0BD5E6951C6209C50024CF2C /* DBManager.m in Sources */,
+				0BFEE0FD1C64156F008188DB /* Reachability.m in Sources */,
 				0BD5E6A81C6242730024CF2C /* UserConstants.m in Sources */,
 				0BC1E29C1C616EE900F190DD /* LoginViewController.m in Sources */,
 				0BC1E29F1C616F0700F190DD /* RegisterViewController.m in Sources */,
@@ -472,14 +508,6 @@
 				0BC1E2651C60CEDA00F190DD /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0BC1E2691C60CEDA00F190DD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0BC1E26A1C60CEDA00F190DD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -569,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -589,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
