@@ -7,16 +7,30 @@
 //
 
 #import "LoginViewController.h"
+#import "InternetConnectionController.h"
+#import "BackgroundGradient.h"
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameLoginTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordLoginTextField;
+
+- (IBAction)loginButton:(id)sender;
 
 @end
 
 @implementation LoginViewController
 
+static InternetConnectionController *internetChecker;
+static UIAlertController *alertView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
+    
+    [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,4 +48,54 @@
 }
 */
 
+- (IBAction)loginButton:(id)sender {
+    NSString *status = [internetChecker getConnectionStatus];
+    
+    if ([status isEqualToString:@"Not connected"]) {
+        [self showAlertWithTitle:@"Not connected" andMessage:@"Please, enable internet connection"];
+    } else {
+        NSString *username = self.usernameLoginTextField.text;
+        NSString *password = self.passwordLoginTextField.text;
+        
+        UIActivityIndicatorView *mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        mySpinner.center = CGPointMake(160, 490);
+        mySpinner.color = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
+        mySpinner.hidesWhenStopped = YES;
+        [self.view addSubview:mySpinner];
+        [mySpinner startAnimating];
+        
+        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+            if (user) {
+                [mySpinner stopAnimating];
+                [mySpinner hidesWhenStopped];
+                
+                [self performSegueWithIdentifier:@"fromLoginToHome" sender:self];
+            } else {
+                [mySpinner stopAnimating];
+                [mySpinner hidesWhenStopped];
+                
+                NSString *errorString = [error userInfo][@"error"];
+                [self showAlertWithTitle:@"Ops, something went wrong" andMessage:errorString];
+            }
+        }];
+    }
+}
+
+-(void)showAlertWithTitle:(NSString *)title
+               andMessage:(NSString *)message {
+    alertView = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alertView dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    
+    [alertView addAction:ok];
+    
+    [self presentViewController:alertView animated:YES completion:nil];
+}
 @end

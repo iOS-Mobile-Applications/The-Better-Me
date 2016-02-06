@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3759A61C64EF3C004F85AB /* circle-user-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759A21C64EF3B004F85AB /* circle-user-7.png */; };
+		0B3759A71C64EF3C004F85AB /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759A31C64EF3C004F85AB /* home-7.png */; };
+		0B3759A81C64EF3C004F85AB /* plus-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759A41C64EF3C004F85AB /* plus-simple-7.png */; };
+		0B3759A91C64EF3C004F85AB /* square-individual-nine-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759A51C64EF3C004F85AB /* square-individual-nine-7.png */; };
+		0B3759AC1C650B66004F85AB /* to-do-app.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759AB1C650B66004F85AB /* to-do-app.jpg */; };
+		0B3759AE1C655950004F85AB /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759AD1C65594F004F85AB /* background.jpg */; };
+		0B3759B01C6561B6004F85AB /* backgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B3759AF1C6561B5004F85AB /* backgroundImage.jpg */; };
+		0B3759B41C656D42004F85AB /* BackgroundGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759B31C656D41004F85AB /* BackgroundGradient.m */; };
 		0BC1E25D1C60CEDA00F190DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1E25C1C60CEDA00F190DD /* main.m */; };
 		0BC1E2601C60CEDA00F190DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1E25F1C60CEDA00F190DD /* AppDelegate.m */; };
 		0BC1E2661C60CEDA00F190DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1E2641C60CEDA00F190DD /* Main.storyboard */; };
@@ -56,6 +64,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B3759A21C64EF3B004F85AB /* circle-user-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "circle-user-7.png"; path = "../../../FunBookMobile-master/FunBookMobile.iOS/FunBookMobile.iOS/circle-user-7.png"; sourceTree = "<group>"; };
+		0B3759A31C64EF3C004F85AB /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-7.png"; path = "../../../FunBookMobile-master/FunBookMobile.iOS/FunBookMobile.iOS/home-7.png"; sourceTree = "<group>"; };
+		0B3759A41C64EF3C004F85AB /* plus-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-simple-7.png"; path = "../../../FunBookMobile-master/FunBookMobile.iOS/FunBookMobile.iOS/plus-simple-7.png"; sourceTree = "<group>"; };
+		0B3759A51C64EF3C004F85AB /* square-individual-nine-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "square-individual-nine-7.png"; path = "../../../FunBookMobile-master/FunBookMobile.iOS/FunBookMobile.iOS/square-individual-nine-7.png"; sourceTree = "<group>"; };
+		0B3759AB1C650B66004F85AB /* to-do-app.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "to-do-app.jpg"; path = "../../../to-do-app.jpg"; sourceTree = "<group>"; };
+		0B3759AD1C65594F004F85AB /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../../../background.jpg; sourceTree = "<group>"; };
+		0B3759AF1C6561B5004F85AB /* backgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = backgroundImage.jpg; path = ../../../backgroundImage.jpg; sourceTree = "<group>"; };
+		0B3759B21C656D41004F85AB /* BackgroundGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGradient.h; sourceTree = "<group>"; };
+		0B3759B31C656D41004F85AB /* BackgroundGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGradient.m; sourceTree = "<group>"; };
 		0BC1E2581C60CEDA00F190DD /* The Better Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Better Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC1E25C1C60CEDA00F190DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0BC1E25E1C60CEDA00F190DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,6 +174,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B3759AA1C64EF4C004F85AB /* Custom Images */ = {
+			isa = PBXGroup;
+			children = (
+				0B3759AF1C6561B5004F85AB /* backgroundImage.jpg */,
+				0B3759AD1C65594F004F85AB /* background.jpg */,
+				0B3759AB1C650B66004F85AB /* to-do-app.jpg */,
+				0B3759A21C64EF3B004F85AB /* circle-user-7.png */,
+				0B3759A31C64EF3C004F85AB /* home-7.png */,
+				0B3759A41C64EF3C004F85AB /* plus-simple-7.png */,
+				0B3759A51C64EF3C004F85AB /* square-individual-nine-7.png */,
+			);
+			name = "Custom Images";
+			sourceTree = "<group>";
+		};
+		0B3759B11C656CEA004F85AB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0B3759B21C656D41004F85AB /* BackgroundGradient.h */,
+				0B3759B31C656D41004F85AB /* BackgroundGradient.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		0BC1E24F1C60CED900F190DD = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +231,7 @@
 		0BC1E25B1C60CEDA00F190DD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0B3759AA1C64EF4C004F85AB /* Custom Images */,
 				0BC1E2931C6155BF00F190DD /* AppDelegate */,
 				0BC1E2671C60CEDA00F190DD /* Assets.xcassets */,
 				0BFEE0F81C63C9A6008188DB /* LaunchScreen.storyboard */,
@@ -331,6 +372,7 @@
 		0BC1E2C21C6178D600F190DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0B3759B11C656CEA004F85AB /* UI */,
 				0BFEE0FA1C6414BA008188DB /* Network */,
 				0BD5E69F1C6238100024CF2C /* Constants */,
 				0BD5E69E1C6237D70024CF2C /* Validation */,
@@ -459,10 +501,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC1E2C11C61770100F190DD /* DetailsProgramTableViewCell.xib in Resources */,
+				0B3759A91C64EF3C004F85AB /* square-individual-nine-7.png in Resources */,
 				0BC1E2681C60CEDA00F190DD /* Assets.xcassets in Resources */,
 				0BC1E2BC1C61761A00F190DD /* HomeTableViewCell.xib in Resources */,
+				0B3759A81C64EF3C004F85AB /* plus-simple-7.png in Resources */,
+				0B3759A71C64EF3C004F85AB /* home-7.png in Resources */,
 				0BFEE0F91C63C9A6008188DB /* LaunchScreen.storyboard in Resources */,
+				0B3759A61C64EF3C004F85AB /* circle-user-7.png in Resources */,
 				0BC1E2661C60CEDA00F190DD /* Main.storyboard in Resources */,
+				0B3759B01C6561B6004F85AB /* backgroundImage.jpg in Resources */,
+				0B3759AE1C655950004F85AB /* background.jpg in Resources */,
+				0B3759AC1C650B66004F85AB /* to-do-app.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +543,7 @@
 				0BC1E29F1C616F0700F190DD /* RegisterViewController.m in Sources */,
 				0BC1E2B01C61733400F190DD /* CreateProgramViewController.m in Sources */,
 				0BC1E2AD1C61731400F190DD /* CreateMenuViewController.m in Sources */,
+				0B3759B41C656D42004F85AB /* BackgroundGradient.m in Sources */,
 				0BC1E2A21C616F9100F190DD /* ProfileViewController.m in Sources */,
 				0BC1E2A51C616FCF00F190DD /* HomeViewController.m in Sources */,
 			);

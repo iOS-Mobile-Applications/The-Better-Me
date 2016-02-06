@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "InternetConnectionController.h"
 #import "UserConstants.h"
+#import "BackgroundGradient.h"
 #import "The_Better_Me-Swift.h"
 #import <Parse/Parse.h>
 
@@ -31,6 +32,10 @@ static UIAlertController *alertView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
+    
+    [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,9 +85,11 @@ static UIAlertController *alertView;
             
             user[@"firstName"] = firstName;
             user[@"lastName"] = lastName;
+            user[@"isFirstTime"] = @"true";
             
             UIActivityIndicatorView *mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            mySpinner.center = CGPointMake(160, 240);
+            mySpinner.center = CGPointMake(160, 490);
+            mySpinner.color = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
             mySpinner.hidesWhenStopped = YES;
             [self.view addSubview:mySpinner];
             [mySpinner startAnimating];
@@ -93,13 +100,13 @@ static UIAlertController *alertView;
                     [mySpinner hidesWhenStopped];
                     
                     [self showAlertWithTitle:@"Successfully registered" andMessage:nil];
-                    // Redirect to Log In
+                    [self performSegueWithIdentifier:@"fromRegisterToLogin" sender:self];
                 } else {
                     [mySpinner stopAnimating];
                     [mySpinner hidesWhenStopped];
                     
                     NSString *errorString = [error userInfo][@"error"];
-                    [self showAlertWithTitle:errorString andMessage:nil];
+                    [self showAlertWithTitle:@"Ops, something went wrong" andMessage:errorString];
                 }
             }];
         }
@@ -123,4 +130,5 @@ static UIAlertController *alertView;
     
     [self presentViewController:alertView animated:YES completion:nil];
 }
+
 @end
