@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateMenuViewController : UIViewController
+@interface CreateMenuViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end

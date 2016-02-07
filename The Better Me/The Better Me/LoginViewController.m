@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "InternetConnectionController.h"
 #import "BackgroundGradient.h"
+#import "SoundManager.h"
+#import <AudioToolbox/AudioToolbox.h>
 #import <Parse/Parse.h>
 
 @interface LoginViewController ()
@@ -48,7 +50,12 @@ static UIAlertController *alertView;
 }
 */
 
+
 - (IBAction)loginButton:(id)sender {
+    SoundManager *manager = [[SoundManager alloc] initSound];
+    SystemSoundID toneSSID = manager.sound;
+    AudioServicesPlaySystemSound(toneSSID);
+    
     NSString *status = [internetChecker getConnectionStatus];
     
     if ([status isEqualToString:@"Not connected"]) {

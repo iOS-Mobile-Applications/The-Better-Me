@@ -1,19 +1,21 @@
 //
-//  UserAdditionalInfoViewController.m
+//  CreateViewController.m
 //  The Better Me
 //
-//  Created by Dimitar Dzhurenov on 2/3/16.
+//  Created by Dimitar Dzhurenov on 2/6/16.
 //  Copyright © 2016 Dimitar Dzhurenov. All rights reserved.
 //
 
-#import "UserAdditionalInfoViewController.h"
+#import "CreateViewController.h"
 #import "BackgroundGradient.h"
 
-@interface UserAdditionalInfoViewController ()
+@interface CreateViewController ()
+- (IBAction)createMealButton:(id)sender;
+- (IBAction)createProgram:(id)sender;
 
 @end
 
-@implementation UserAdditionalInfoViewController
+@implementation CreateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,4 +40,13 @@
 }
 */
 
+- (IBAction)createMealButton:(id)sender {
+    // TODO: add tap sound
+    //[self performSegueWithIdentifier:@"fromCreateToCreateMenu" sender:self];
+}
+
+- (IBAction)createProgram:(id)sender {
+    // TODO: add tap sound
+    //[self performSegueWithIdentifier:@"fromCreateToCreateProgram" sender:self];
+}
 @end

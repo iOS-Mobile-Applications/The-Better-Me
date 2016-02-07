@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "BackgroundGradient.h"
 
 @interface HomeViewController ()
 
@@ -16,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
+    
+    [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
 }
 
 - (void)didReceiveMemoryWarning {
