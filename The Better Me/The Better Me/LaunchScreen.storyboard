@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -18,22 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Better Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueg-2C-zVb">
-                                <rect key="frame" x="20" y="158" width="560" height="149"/>
-                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="to-do-app.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="okY-CE-Qxs">
-                                <rect key="frame" x="-228" y="0.0" width="794" height="790"/>
+                                <rect key="frame" x="-228" y="0.0" width="839" height="790"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Better Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZj-iD-VqR">
+                                <rect key="frame" x="0.0" y="219" width="600" height="116"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.70888429880142212" green="1" blue="0.38895183801651001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ueg-2C-zVb" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="138" id="EFi-VS-Xhb"/>
-                            <constraint firstItem="ueg-2C-zVb" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="iEL-tB-6bI"/>
-                            <constraint firstItem="ueg-2C-zVb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="mxR-aM-qfF"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ueg-2C-zVb" secondAttribute="bottom" constant="293" id="zAz-gd-5QE"/>
+                            <constraint firstItem="MZj-iD-VqR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GAC-R8-scq"/>
+                            <constraint firstItem="MZj-iD-VqR" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Lip-3v-fBZ"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="MZj-iD-VqR" secondAttribute="bottom" constant="265" id="dgl-9j-yko"/>
+                            <constraint firstItem="MZj-iD-VqR" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="199" id="iyz-L6-7q3"/>
                         </constraints>
                     </view>
                 </viewController>

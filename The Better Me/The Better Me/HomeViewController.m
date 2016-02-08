@@ -32,13 +32,21 @@ MealModel *selectedValue;
     [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
     
     data = [self getFiltredData];
+    [self.mainTableView reloadData];
+    
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
+    
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(prepareForSegue:sender:)];
     tapRecognizer.numberOfTapsRequired = 2;
     tapRecognizer.numberOfTouchesRequired = 1;
     [self.mainTableView addGestureRecognizer:tapRecognizer];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self.mainTableView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,6 +101,8 @@ MealModel *selectedValue;
     [query whereKey:@"mealDate" equalTo:today];
     [query orderByAscending:@"mealTime"];
 
+    [self.mainTableView reloadData];
+    
     return [query findObjects];
 }
 

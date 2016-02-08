@@ -60,7 +60,6 @@ NSString *productName;
     
     self.foodPicker.dataSource = self;
     self.foodPicker.delegate = self;
-
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateProgramViewController : UIViewController
+@interface CreateProgramViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+
 
 @end
