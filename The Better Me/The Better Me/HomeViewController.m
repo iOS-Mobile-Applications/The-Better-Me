@@ -9,7 +9,10 @@
 #import "HomeViewController.h"
 #import "BackgroundGradient.h"
 #import "MealModel.h"
+#import "SoundManager.h"
+#import <AudioToolbox/AudioToolbox.h>
 #import "HomeTableViewCell.h"
+#import "MealDetailsViewController.h"
 #import <Parse/Parse.h>
 
 @interface HomeViewController ()
@@ -20,21 +23,22 @@
 @implementation HomeViewController
 
 NSArray *data;
+MealModel *selectedValue;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
+    [super viewDidLoad];
     BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
     
     [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
     
     data = [self getFiltredData];
-    
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
-    
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(prepareForSegue:sender:)];
+    tapRecognizer.numberOfTapsRequired = 2;
+    tapRecognizer.numberOfTouchesRequired = 1;
+    [self.mainTableView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,21 +46,24 @@ NSArray *data;
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    SoundManager *manager = [[SoundManager alloc] initSound];
+    SystemSoundID toneSSID = manager.sound;
+    AudioServicesPlaySystemSound(toneSSID);
+    
+    MealDetailsViewController *toVC = segue.destinationViewController;
+    toVC.details = [selectedValue productsCollection];
 }
-*/
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeTableViewCell" owner:self options:nil] objectAtIndex:0];
-        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIdentifier"];
     }
     
     cell.homeCellTimeLabel.text = [data[indexPath.row] mealTime];
@@ -67,6 +74,11 @@ NSArray *data;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return data.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    selectedValue = [data objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"segueShowDetails" sender:tableView];
 }
 
 -(NSArray *)getFiltredData {

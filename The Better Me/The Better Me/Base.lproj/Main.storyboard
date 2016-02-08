@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Log In-->
@@ -123,11 +124,60 @@
                     <navigationItem key="navigationItem" title="Home" id="Adp-ti-Eod"/>
                     <connections>
                         <outlet property="mainTableView" destination="3rT-5k-eMg" id="uTm-21-uMx"/>
+                        <segue destination="3g7-ld-jMm" kind="show" identifier="segueShowDetails" id="2KA-Ah-yOL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExU-UZ-irX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-448" y="1462"/>
+        </scene>
+        <!--Meal Details View Controller-->
+        <scene sceneID="fta-2b-5R2">
+            <objects>
+                <viewController id="3g7-ld-jMm" customClass="MealDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V0h-ct-ECK"/>
+                        <viewControllerLayoutGuide type="bottom" id="3u5-AE-9uc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XtD-QZ-DJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-or-OdZ">
+                                <rect key="frame" x="20" y="88" width="560" height="118"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="118" id="NR9-8P-6ue"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWi-Fz-GSZ">
+                                <rect key="frame" x="0.0" y="222" width="600" height="329"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XWi-Fz-GSZ" firstAttribute="top" secondItem="7y0-or-OdZ" secondAttribute="bottom" constant="16" id="2M7-Zm-mzm"/>
+                            <constraint firstItem="XWi-Fz-GSZ" firstAttribute="bottom" secondItem="3u5-AE-9uc" secondAttribute="top" id="NdJ-k1-u0r"/>
+                            <constraint firstItem="7y0-or-OdZ" firstAttribute="top" secondItem="V0h-ct-ECK" secondAttribute="bottom" constant="24" id="OzM-WY-udd"/>
+                            <constraint firstItem="7y0-or-OdZ" firstAttribute="leading" secondItem="XtD-QZ-DJ9" secondAttribute="leadingMargin" id="S2P-fZ-foC"/>
+                            <constraint firstItem="7y0-or-OdZ" firstAttribute="trailing" secondItem="XtD-QZ-DJ9" secondAttribute="trailingMargin" id="XzF-p2-Ofg"/>
+                            <constraint firstItem="XWi-Fz-GSZ" firstAttribute="leading" secondItem="XtD-QZ-DJ9" secondAttribute="leading" id="Zzq-ia-Ims"/>
+                            <constraint firstItem="7y0-or-OdZ" firstAttribute="centerX" secondItem="XWi-Fz-GSZ" secondAttribute="centerX" id="gUQ-Yx-jiL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailsTableView" destination="XWi-Fz-GSZ" id="11R-tq-9TB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhB-5K-cse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-859" y="2230"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="eeY-6y-B5d">

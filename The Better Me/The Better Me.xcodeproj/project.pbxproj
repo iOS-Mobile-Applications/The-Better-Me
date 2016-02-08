@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B365BDF1C682E4500F5F1E7 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B365BDE1C682E4500F5F1E7 /* FoodModel.m */; };
+		0B365BE21C686CA300F5F1E7 /* MealDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B365BE11C686CA200F5F1E7 /* MealDetailsViewController.m */; };
 		0B3759B41C656D42004F85AB /* BackgroundGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759B31C656D41004F85AB /* BackgroundGradient.m */; };
 		0B3759B71C658394004F85AB /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759B61C658393004F85AB /* CreateViewController.m */; };
 		0B3759BE1C660D57004F85AB /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759BD1C660D57004F85AB /* SoundManager.m */; };
@@ -69,6 +70,8 @@
 /* Begin PBXFileReference section */
 		0B365BDD1C682E4400F5F1E7 /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
 		0B365BDE1C682E4500F5F1E7 /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		0B365BE01C686CA200F5F1E7 /* MealDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealDetailsViewController.h; sourceTree = "<group>"; };
+		0B365BE11C686CA200F5F1E7 /* MealDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealDetailsViewController.m; sourceTree = "<group>"; };
 		0B3759B21C656D41004F85AB /* BackgroundGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGradient.h; sourceTree = "<group>"; };
 		0B3759B31C656D41004F85AB /* BackgroundGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGradient.m; sourceTree = "<group>"; };
 		0B3759B51C658392004F85AB /* CreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 			children = (
 				0BC1E2A31C616FCF00F190DD /* HomeViewController.h */,
 				0BC1E2A41C616FCF00F190DD /* HomeViewController.m */,
+				0B365BE01C686CA200F5F1E7 /* MealDetailsViewController.h */,
+				0B365BE11C686CA200F5F1E7 /* MealDetailsViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 				0BC1E2A21C616F9100F190DD /* ProfileViewController.m in Sources */,
 				0B5C87B41C68100700E18F61 /* Reachability.m in Sources */,
 				0B5C87C31C68169900E18F61 /* MealModel.m in Sources */,
+				0B365BE21C686CA300F5F1E7 /* MealDetailsViewController.m in Sources */,
 				0BC1E2A51C616FCF00F190DD /* HomeViewController.m in Sources */,
 				0B365BDF1C682E4500F5F1E7 /* FoodModel.m in Sources */,
 			);
