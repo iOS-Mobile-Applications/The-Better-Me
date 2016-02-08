@@ -13,6 +13,7 @@
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bmrLabel;
+- (IBAction)logoutButton:(id)sender;
 
 @end
 
@@ -26,7 +27,7 @@
     
     PFUser *currentUser = [PFUser currentUser];
     self.userNameLabel.text = [NSString stringWithFormat:@"%@", currentUser.username];
-    self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %2f", (5.5 * 45) + 4.25 *(210 +10) + 345];
+    self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %d", (5 * 45) + 4 *(210 +10) + 345];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,4 +45,8 @@
 }
 */
 
+- (IBAction)logoutButton:(id)sender {
+    [PFUser logOut];
+    
+}
 @end
