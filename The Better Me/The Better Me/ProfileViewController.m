@@ -8,8 +8,11 @@
 
 #import "ProfileViewController.h"
 #import "BackgroundGradient.h"
+#import <Parse/Parse.h>
 
 @interface ProfileViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bmrLabel;
 
 @end
 
@@ -19,8 +22,11 @@
     [super viewDidLoad];
     
     BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
-    
     [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@", currentUser.username];
+    self.bmrLabel.text = [NSString stringWithFormat:@"BMR: %2f", (5.5 * 45) + 4.25 *(210 +10) + 345];
 }
 
 - (void)didReceiveMemoryWarning {
