@@ -17,7 +17,7 @@
     sqlite3 *databaseHandle;
 }
 
--(void) initDatabase;
+-(instancetype) initDatabase;
 
 -(void)insertUser:(User *)user;
 -(void)insertProduct:(Product *)product;
@@ -26,8 +26,5 @@
 -(NSArray *)getAllUserData;
 -(NSArray *)getAllProductsData;
 -(NSArray *)getAllExercisesData;
-
--(NSArray *)getProductsByDate:(NSDate *)date;
--(NSArray *)getExercisesByDate:(NSDate *)date;
 
 @end

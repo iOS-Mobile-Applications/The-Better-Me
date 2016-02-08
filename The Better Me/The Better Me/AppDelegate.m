@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DBManager.h"
+#import "User.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -20,9 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Parse setApplicationId:@"aoDeiCp7EHDOZIoheoe6QXnLj6StOGz5Lr23hBzT"
                   clientKey:@"kIB6iaUNT2Cwwt3BBGJUKpLGFoSy3iU9zQqDCrY4"];
-    
-    //DBManager *database = [[DBManager alloc] init];
-    //[database initDatabase];
     
     return YES;
 }

@@ -8,6 +8,8 @@
 
 #import "UserAdditionalInfoViewController.h"
 #import "BackgroundGradient.h"
+#import "User.h"
+#import "DBManager.h"
 
 @interface UserAdditionalInfoViewController ()
 
@@ -19,8 +21,9 @@
     [super viewDidLoad];
     
     BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
-    
     [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

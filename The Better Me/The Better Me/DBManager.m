@@ -11,17 +11,16 @@
 
 @interface DBManager()
 
-
 @end
 
 @implementation DBManager
 
 // Method to open a database. The database will be created if it doesn't exist
--(void)initDatabase {
+-(instancetype)initDatabase {
     // Create a string containing the full path to the sqlite.db inside the documents folder
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"sqlite.db"];
+    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"theBetterMe.db"];
     
     // Check to see if the database file already exists
     BOOL databaseAlreadyExists = [[NSFileManager defaultManager] fileExistsAtPath:databasePath];
@@ -64,6 +63,7 @@
     
     // Close the database
     sqlite3_close(databaseHandle);
+    return self;
 }
 
 // CRUD operations
