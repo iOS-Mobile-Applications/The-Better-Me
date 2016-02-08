@@ -10,4 +10,7 @@
 
 @interface HomeTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *homeCellTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCellTypeLabel;
+
 @end

@@ -8,6 +8,10 @@
 
 #import "HomeTableViewCell.h"
 
+@interface HomeTableViewCell()
+
+@end
+
 @implementation HomeTableViewCell
 
 - (void)awakeFromNib {
