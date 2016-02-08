@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B365BDF1C682E4500F5F1E7 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B365BDE1C682E4500F5F1E7 /* FoodModel.m */; };
 		0B3759B41C656D42004F85AB /* BackgroundGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759B31C656D41004F85AB /* BackgroundGradient.m */; };
 		0B3759B71C658394004F85AB /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759B61C658393004F85AB /* CreateViewController.m */; };
 		0B3759BE1C660D57004F85AB /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3759BD1C660D57004F85AB /* SoundManager.m */; };
@@ -17,6 +18,7 @@
 		0B5C87BD1C68130500E18F61 /* plus-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C87B91C68130500E18F61 /* plus-simple-7.png */; };
 		0B5C87BE1C68130500E18F61 /* square-individual-nine-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C87BA1C68130500E18F61 /* square-individual-nine-7.png */; };
 		0B5C87C01C6813E700E18F61 /* to-do-app.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C87BF1C6813E700E18F61 /* to-do-app.jpg */; };
+		0B5C87C31C68169900E18F61 /* MealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C87C21C68169900E18F61 /* MealModel.m */; };
 		0BC1E25D1C60CEDA00F190DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1E25C1C60CEDA00F190DD /* main.m */; };
 		0BC1E2601C60CEDA00F190DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1E25F1C60CEDA00F190DD /* AppDelegate.m */; };
 		0BC1E2661C60CEDA00F190DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1E2641C60CEDA00F190DD /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B365BDD1C682E4400F5F1E7 /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
+		0B365BDE1C682E4500F5F1E7 /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
 		0B3759B21C656D41004F85AB /* BackgroundGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGradient.h; sourceTree = "<group>"; };
 		0B3759B31C656D41004F85AB /* BackgroundGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGradient.m; sourceTree = "<group>"; };
 		0B3759B51C658392004F85AB /* CreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 		0B5C87B91C68130500E18F61 /* plus-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-simple-7.png"; sourceTree = "<group>"; };
 		0B5C87BA1C68130500E18F61 /* square-individual-nine-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square-individual-nine-7.png"; sourceTree = "<group>"; };
 		0B5C87BF1C6813E700E18F61 /* to-do-app.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "to-do-app.jpg"; sourceTree = "<group>"; };
+		0B5C87C11C68169900E18F61 /* MealModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealModel.h; sourceTree = "<group>"; };
+		0B5C87C21C68169900E18F61 /* MealModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealModel.m; sourceTree = "<group>"; };
 		0BC1E2581C60CEDA00F190DD /* The Better Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Better Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC1E25C1C60CEDA00F190DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0BC1E25E1C60CEDA00F190DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -451,6 +457,10 @@
 		0BD7E69B1C6399E500C80C29 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				0B5C87C11C68169900E18F61 /* MealModel.h */,
+				0B5C87C21C68169900E18F61 /* MealModel.m */,
+				0B365BDD1C682E4400F5F1E7 /* FoodModel.h */,
+				0B365BDE1C682E4500F5F1E7 /* FoodModel.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -569,7 +579,9 @@
 				0B3759B41C656D42004F85AB /* BackgroundGradient.m in Sources */,
 				0BC1E2A21C616F9100F190DD /* ProfileViewController.m in Sources */,
 				0B5C87B41C68100700E18F61 /* Reachability.m in Sources */,
+				0B5C87C31C68169900E18F61 /* MealModel.m in Sources */,
 				0BC1E2A51C616FCF00F190DD /* HomeViewController.m in Sources */,
+				0B365BDF1C682E4500F5F1E7 /* FoodModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

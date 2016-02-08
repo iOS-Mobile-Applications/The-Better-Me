@@ -65,7 +65,7 @@ static UIAlertController *alertView;
         NSString *password = self.passwordLoginTextField.text;
         
         UIActivityIndicatorView *mySpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        mySpinner.center = CGPointMake(160, 490);
+        mySpinner.center = CGPointMake(180, 490);
         mySpinner.color = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
         mySpinner.hidesWhenStopped = YES;
         [self.view addSubview:mySpinner];

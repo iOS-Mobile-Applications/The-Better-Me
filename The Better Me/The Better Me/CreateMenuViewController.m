@@ -8,6 +8,7 @@
 
 #import "CreateMenuViewController.h"
 #import "BackgroundGradient.h"
+#import "MealModel.h"
 
 @interface CreateMenuViewController ()
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -23,8 +24,10 @@
 
 @implementation CreateMenuViewController
 
+static UIAlertController *alertView;
+
 NSArray *foodData;
-NSMutableArray *meal;
+NSMutableArray *productsCollection;
 
 NSString *theDate;
 NSString *theTime;
@@ -33,16 +36,31 @@ NSString *productName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    productsCollection = [[NSMutableArray alloc] init];
     
     BackgroundGradient *gradient = [[BackgroundGradient alloc] init];
     
     [gradient setBackgroundGradientWithFrame:self.view.bounds andLayer:self.view.layer];
     
-    // TODO: Load data from Parse.com
-    foodData = @[@"Eggs", @"Milk", @"Bananas", @"Chicken breasts", @"Rise", @"Potatoes", @"Tomate"];
+    // Load data from Parse.com
+    PFQuery *query = [PFQuery queryWithClassName:@"Food"];
+    [query selectKeys:@[@"name"]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        for (NSInteger i = 0; i < 10; i++) {
+            NSString *product = [NSString stringWithFormat:@"%@",[[objects valueForKey:@"name"] objectAtIndex:i]];
+            NSLog(@"%@", product);
+            //[foodData addObject:product];
+            
+            [self.foodPicker reloadAllComponents];
+        }
+        
+    }];
+    
+    foodData = @[@"lamb steak", @"chicken breast", @"tomato", @"avocado", @"pine apple", @"bread", @"eggs", @"milk", @"cheese"];
     
     self.foodPicker.dataSource = self;
     self.foodPicker.delegate = self;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,13 +100,46 @@ NSString *productName;
     [dateFormat setDateFormat:@"hh:mm"];
     theTime = [dateFormat stringFromDate:time];
     
+    NSString *productData = [NSString stringWithFormat:@"%@ - %@gr", productName, self.productQuantityTextField.text];
     
-    
-    NSLog(@"%@", theDate);
-    NSLog(@"%@", productName);
-    NSLog(@"%@", theTime);
+    [productsCollection addObject:productData];
+    self.productQuantityTextField.text = @"";
+    self.addedProductLabel.text = [NSString stringWithFormat:@"%lu Products Added", (unsigned long)productsCollection.count];
 }
 
 - (IBAction)saveMealButton:(id)sender {
+    PFUser *currentUser = [PFUser currentUser];
+    MealModel *meal = [[MealModel alloc] initWithDate:theDate
+                                              andTime:theTime
+                                          andProducts:productsCollection
+                                           andCreator:currentUser.username];
+    
+    [meal saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self showAlertWithTitle:@"Wohoo" andMessage:@"You added new meal successfully"];
+        } else {
+            [self showAlertWithTitle:@"Ops, something went wrong" andMessage:@""];
+        }
+    }];
+    
+    
+}
+
+-(void)showAlertWithTitle:(NSString *)title
+               andMessage:(NSString *)message {
+    alertView = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alertView dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    
+    [alertView addAction:ok];
+    
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 @end
